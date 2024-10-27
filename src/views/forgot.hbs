@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="icon" href="data/images/logo.jpb.jpg">
+    
+    <link rel="stylesheet" href="data/css/signupandforgot.css" />
+    <title>forgot password</title>
+    <style>
+      
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="forms-container">
+        <div class="signin-signup" >
+          <form action="/forgot" method="POST" class="sign-in-form">
+            <h2 class="title">Forgot password</h2>
+            <div class="input-field">
+              <i class="fas fa-user"></i>
+              <input type="text" name="for_name" placeholder="E-mail" />
+            </div>
+            <div class="input-field">
+              <i class="fa-solid fa-lock"></i>
+              <input type="text" name="for_password" placeholder="Current password" />
+            </div>
+            <div class="input-field">
+              <i class="fa-solid fa-lock"></i>
+              <input type="text" name="for_c_password" placeholder="New password" />
+            </div>
+            <input type="submit" value="Save" class="btn solid" />
+            <p ><a style="font-size: 16px;">@copyright 2024 </a></p>
+          </form>
+        </div>
+      </div>
+
+      <div class="panels-container" >
+        <div class="panel left-panel" >
+          <div class="content">
+            <h3>New here ?</h3>
+            <p>
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis,
+              ex ratione. Aliquid!
+            </p>
+            <button class="btn transparent" id="sign-up-bt">
+              <a href="/loginsignup" style="color: white;text-decoration: none;display:flex;  width: 100%;height: 100%;justify-content: center;align-items: center;">Back To Login</a>
+            </button>
+          </div>
+          <img src="data/images/7070628_3275432.svg" class="image" alt="" />
+        </div>
+      </div>
+    </div>
+    <script src="data/js/app.js"></script>
+  </body>
+</html>
