@@ -21,17 +21,17 @@ Ensure you have the following installed:
 
 ### 🚀 Steps
 # Clone the repository
-git clone https://github.com/AbhayanandPandey/E-Park_GateWay.git
+- git clone https://github.com/AbhayanandPandey/E-Park_GateWay.git
 cd E-Park_GateWay/src
 
 # Install dependencies
-npm install
+- npm install
 
 # Set up environment variables
-# Create a .env file in the root directory and configure required variables such as database credentials, API keys, etc.
+-  Create a .env file in the root directory and configure required variables such as database credentials, API keys, etc.
 
-# Run the application
-npm start
+## Run the application
+- npm start
 
 ## 🎯 Usage
 1. **Register/Login** to access parking services.
@@ -48,15 +48,15 @@ npm start
 ## 🤝 Contribution
 ## Fork the repository
 ## Create a new branch
-git checkout -b feature-xyz
+- git checkout -b feature-xyz
 
 ## Commit your changes
-git commit -m 'Add feature xyz'
+- git commit -m 'Add feature xyz'
 
 ## Push to the branch
-git push origin feature-xyz
+- git push origin feature-xyz
 
 ## Create a Pull Request on GitHub
 
 ## 📞 Contact
-For queries, reach out to [Abhayanand Pandey](https://github.com/AbhayanandPandey).
+- For queries, reach out to [Abhayanand Pandey](https://github.com/AbhayanandPandey).
