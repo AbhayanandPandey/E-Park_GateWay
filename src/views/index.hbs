@@ -4,43 +4,74 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>E-PARK GATEWAY</title>
+  <title>{{ title }}</title>
   <meta name="description" content="">
   <meta name="keywords" content="">
-
-  <!-- Favicons -->
   <link href="./assets/img/favicon.png" rel="icon">
   <link href="./assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
-  <!-- Fonts -->
+  <link rel="icon" href="data/images/logo.jpb.jpg">
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
   <link
     href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
     rel="stylesheet">
-
-  <!-- Vendor CSS Files -->
   <link href="./assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="./assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
   <link href="./assets/vendor/aos/aos.css" rel="stylesheet">
   <link href="./assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="./assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-
-  <!-- Main CSS File -->
   <link href="./assets/css/main.css" rel="stylesheet">
-
-
+  <style>
+    .alert {
+      text-align: center;
+      position: absolute;
+      z-index: 99999999;
+      padding: 0.75rem 1.25rem;
+      margin-bottom: 1rem;
+      width: 100%;
+      border: 1px solid transparent;
+      border-radius: 0.25rem;
+    }
+    .alert-success {
+      color: #0f5132;
+      background-color: #d1e7dd;
+      border-color: #badbcc;
+    }
+    .alert-danger {
+      color: #842029;
+      background-color: #f8d7da;
+      border-color: #f5c2c7;
+    }
+    .alert-dismissible {
+      padding-right: 3rem;
+    }
+    .alert-dismissible .btn-close {
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding: 0.75rem 1.25rem;
+      color: inherit;
+    }
+    .fade {
+      transition: opacity 0.15s linear;
+    }
+    .show {
+      opacity: 1;
+    }
+  </style>
 </head>
-
+{{#if alertMessage}}
+<div class="alert alert-{{alertType}} alert-dismissible fade show" role="alert">
+  {{alertMessage}}
+</div>
+{{/if}}
 <body class="index-page">
-
   <header id="header" class="header sticky-top">
-
     <div class="topbar d-flex align-items-center light-background">
       <div class="container d-flex justify-content-center justify-content-md-between">
         <div class="contact-info d-flex align-items-center">
           <i class="bi bi-envelope d-flex align-items-center"><a
-              href="mailto:contact@example.com">eparksupport@gmail.com</a></i>
+              href="mailto:contact@example.com">eparkgateway@gmail.com</a></i>
           <i class="bi bi-phone d-flex align-items-center ms-4"><span>+0532 969 070</span></i>
         </div>
         <div class="social-links d-none d-md-flex align-items-center">
@@ -50,17 +81,12 @@
           <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
         </div>
       </div>
-    </div><!-- End Top Bar -->
-
+    </div>
     <div class="branding d-flex align-items-cente">
-
       <div class="container position-relative d-flex align-items-center justify-content-between">
-        <a href="index"="logo d-flex align-items-center">
-          <!-- Uncomment the line below if you also wish to use an image logo -->
-          <!-- <img src="assets/img/logo.png" alt=""> -->
+        <a href="index"class="logo d-flex align-items-center">
           <h1 class="sitename">E - Park Gateway</h1>
         </a>
-
         <nav id="navmenu" class="navmenu">
           <ul>
             <li><a href="index" class="active">Home<br></a></li>
@@ -72,15 +98,14 @@
             <li><a href="blog">Updates/Events</a></li>
             <li class="dropdown"><a href="#"><span>Parks</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
               <ul>
-                <li class="dropdown"><a href="hatipark"><span><a href="hatipark">Hathi Park</a></span> <i
+                <li class="dropdown"><a href="hathipark"><span>Hati park</span> <i
                       class="bi bi-chevron-down toggle-dropdown"></i></a>
                   <ul>
                     <li><a href="#">View Gallery</a></li>
                     <li><a href="#">Events</a></li>
                   </ul>
                 </li>
-
-                <li class="dropdown"><a href="#"><span>Company garden/Alfred Park</span> <i
+                <li class="dropdown"><a href="companygarden"><span>Company garden/Alfred Park</span> <i
                       class="bi bi-chevron-down toggle-dropdown"></i></a>
                   <ul>
                     <li><a href="#">Events</a></li>
@@ -90,7 +115,7 @@
               </ul>
             </li>
             <li><a href="contact">Contact</a></li>
-            <li><a href="home">LogOut</a></li>
+            <li><a href="profiledetails">Profile</a></li>
           </ul>
           <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
@@ -98,14 +123,10 @@
     </div>
   </header>
   <main class="main">
-
-    <!-- Hero Section -->
     <section id="hero" class="hero section dark-background">
-
       <div id="hero-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
-
         <div class="carousel-item active">
-          <img src="./assets/img/hero-carousel/bg.jpg" alt="">
+          <img src="assets/img/hero-carousel/bg.jpg" alt="">
           <div class="container">
             <h2>Escape to E-Park Gateway</h2>
             <p>Discover a serene oasis where nature, fun, and adventure meet. E-Park Gateway offers lush gardens,
@@ -116,7 +137,7 @@
         </div><!-- End Carousel Item -->
 
         <div class="carousel-item">
-          <img src="./assets/img/hero-carousel/bg2.jpeg" alt="">
+          <img src="assets/img/hero-carousel/bg2.jpeg" alt="">
           <div class="container">
             <h2> E-Park Gateway: Your Gateway to Nature</h2>
             <p>Step into the natural beauty of Prayagraj at E-Park Gateway, where lush greenery, scenic trails, and
@@ -127,7 +148,7 @@
         </div><!-- End Carousel Item -->
 
         <div class="carousel-item">
-          <img src="./assets/img/hero-carousel/bg5.jpg" alt="">
+          <img src="assets/img/hero-carousel/bg5.jpg" alt="">
           <div class="container">
             <h2>Discover the Green Heart of Prayagraj</h2>
             <p>Immerse yourself in the tranquil beauty of E-Park Gateway, Prayagraj’s premier outdoor escape. With
@@ -174,7 +195,7 @@
     </section><!-- /Call To Action Section -->
 
     <!-- Services Section -->
-    <section id="services" class="services section">
+     <section id="services" class="services section">
 
       <div class="container">
 
@@ -188,10 +209,7 @@
               <a href="#" class="stretched-link">
                 <h3>About EPark</h3>
               </a>
-              <p>Prayagraj EPark Gateway is a transformative digital initiative designed to bring the beauty, history,
-                and vibrancy of Prayagraj's two most iconic green spaces — Hathi Park and Company Garden — into the
-                digital age. Moreover, the website will serve as a real-time guide, offering up-to-date information on
-                events, activities, and amenities within the parks</p>
+              <p>Prayagraj EPark Gateway is a transformative digital initiative designed to bring the beauty, history, and vibrancy of Prayagraj's two most iconic green spaces — Hathi Park and Company Garden — into the digital age. Moreover, the website will serve as a real-time guide, offering up-to-date information on events, activities, and amenities within the parks</p>
             </div>
           </div><!-- End Service Item -->
 
@@ -203,10 +221,8 @@
               <a href="#" class="stretched-link">
                 <h3>E-Ticket purchase</h3>
               </a>
-              <p>The Prayagraj ePark Gateway website is designed to offer a seamless and user-friendly experience for
-                purchasing e-tickets to Hathi Park and Company Garden. To know more <a href="/about">Click Here</a> <br>
-                <code>Ticket Section > Select Park > Select Ticket Type and Quantity > personal details and payment > Download E-Ticket </code>
-              </p>
+              <p>The Prayagraj ePark Gateway website is designed to offer a seamless and user-friendly experience for purchasing e-tickets to Hathi Park and Company Garden. To know more <a href="/about">Click Here</a> <br>
+              <code>Ticket Section > Select Park > Select Ticket Type and Quantity > personal details and payment > Download E-Ticket </code></p>
             </div>
           </div><!-- End Service Item -->
 
@@ -218,8 +234,7 @@
               <a href="#" class="stretched-link">
                 <h3>Events Highlight</h3>
               </a>
-              <p>
-              <ul>
+              <p><ul>
                 <li>Hathi Park Celebrates 75th Anniversary - 25 Aug,2024</li>
                 <li>New Butterfly Garden in Company Garden- 10 Sep,2024</li>
                 <li>
@@ -227,9 +242,8 @@
                   Aug,2024
                 </li>
                 <li>Upcoming Cultural Fest in Hathi Park - 6 to 7 Oct,2024</li>
-
-              </ul>
-              </p>
+                
+              </ul></p>
             </div>
           </div><!-- End Service Item -->
 
@@ -241,10 +255,7 @@
               <a href="#" class="stretched-link">
                 <h3>E-Park Gateway Chatbot</h3>
               </a>
-              <p>Our E-Park Gateway Chatbot is <b><code>24 X 7</code></b> available to assist you every step of the way.
-                Whether you're booking tickets, seeking park information, or planning your visit, the chatbot provides
-                real-time answers and guidance. Designed for ease of use, it ensures a seamless experience, letting you
-                explore and enjoy our website effortlessly.</p>
+              <p>Our E-Park Gateway Chatbot is <b><code>24 X 7</code></b> available to assist you every step of the way. Whether you're booking tickets, seeking park information, or planning your visit, the chatbot provides real-time answers and guidance. Designed for ease of use, it ensures a seamless experience, letting you explore and enjoy our website effortlessly.</p>
               <a href="#" class="stretched-link"></a>
             </div>
           </div><!-- End Service Item -->
@@ -257,15 +268,13 @@
               <a href="#" class="stretched-link">
                 <h3>Park Services </h3>
               </a>
-              <p>
-              <ul>
+              <p><ul>
                 <li>Comfortable Canteen Area</li>
                 <li>Comfortable and renovated Jhula</li>
                 <li>Supportive Staffs and workers</li>
                 <li>Rich diversities and greenery</li>
                 <li>Various Sports Events and playground area</li>
-              </ul>
-              </p>
+              </ul></p>
               <a href="#" class="stretched-link"></a>
             </div>
           </div><!-- End Service Item -->
@@ -278,9 +287,7 @@
               <a href="#" class="stretched-link">
                 <h3>Interactive Maps Available at Park's Page</h3>
               </a>
-              <p>An Interactive Map on E-Park Gateway website serves as a dynamic, user-friendly tool that enhances the
-                visitor experience by allowing them to explore the layout and key features of Hathi Park and Company
-                Garden before arriving.<code><b> " This Feature will be available soon</b>"</code></p>
+              <p>An Interactive Map on E-Park Gateway website serves as a dynamic, user-friendly tool that enhances the visitor experience by allowing them to explore the layout and key features of Hathi Park and Company Garden before arriving.<code><b> " This Feature will be available soon</b>"</code></p>
               <a href="#" class="stretched-link"></a>
             </div>
           </div><!-- End Service Item -->
@@ -291,8 +298,7 @@
 
     </section><!-- /Services Section -->
 
-    <!-- Portfolio Section -->
-    <section id="portfolio" class="portfolio section">
+   <section id="portfolio" class="portfolio section">
 
       <div class="container">
 
@@ -304,158 +310,138 @@
             <li data-filter=".filter-product">Events View</li>
             <li data-filter=".filter-branding">Canteen view</li>
             <li data-filter=".filter-books">Play area and Complex</li>
-          </ul><!-- End Portfolio Filters -->
+          </ul><!-- End Gallery Filters -->
 
           <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
 
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
-              <img src="./assets/img/8.png" class="img-fluid" alt="">
+            <div class="col-lg-4 col-sm-4 col-md-6 portfolio-item isotope-item filter-app">
+              <img src="assets/img/8.png" class="img-fluid" alt="">
               <div class="portfolio-info">
                 <h4>Chandra Sekhar Azad Park (Company Garden)</h4>
                 <p>Gate No 1</p>
-                <a href="./assets/img/8.png" title="App 1" data-gallery="portfolio-gallery-app"
-                  class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                <a href="./portfolio-det" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                <a href="assets/img/8.png" title="image 1" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                <a href="index" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
               </div>
-            </div><!-- End Portfolio Item -->
+            </div><!-- End Gallery Item -->
 
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
-              <img src="./assets/img/12.png" class="img-fluid" alt="">
+            <div class="col-lg-4 col-sm-4 col-md-6 portfolio-item isotope-item filter-product">
+              <img src="assets/img/12.png" class="img-fluid" alt="">
               <div class="portfolio-info">
                 <h4>Chandra Sekhar Azad Statue ceremony</h4>
                 <p>People Celebrating The Azad Statue Ceremony At Company Garden</p>
-                <a href="./assets/img/portfolio/product-1.jpg" title="Product 1"
-                  data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i
-                    class="bi bi-zoom-in"></i></a>
-                <a href="./portfolio-details" title="More Details" class="details-link"><i
-                    class="bi bi-link-45deg"></i></a>
+                <a href="assets/img/12.png" title="image 2" data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                <a href="index" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
               </div>
-            </div><!-- End Portfolio Item -->
+            </div><!-- End Gallery Item -->
 
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
-              <img src="./assets/img/6.png" class="img-fluid" alt="">
+            <div class="col-lg-4 col-sm-4 col-md-6 portfolio-item isotope-item filter-branding">
+              <img src="assets/img/6.png" class="img-fluid" alt="">
               <div class="portfolio-info">
                 <h4>Company Garden </h4>
                 <p>Drone view of Company Garden</p>
-                <a href="./assets/img/portfolio/branding-1.jpg" title="Branding 1"
-                  data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i
-                    class="bi bi-zoom-in"></i></a>
-                <a href="./portfolio-details" title="More Details" class="details-link"><i
-                    class="bi bi-link-45deg"></i></a>
+                <a href="assets/img/6.png" title="image 3" data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                <a href="index" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
               </div>
             </div><!-- End Portfolio Item -->
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-books">
-              <img src="./assets/img/2 (1).jpeg" class="img-fluid" alt="">
+          </div>
+          <br>
+          <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
+            <div class="col-lg-4 col-sm-4 col-md-6 portfolio-item isotope-item filter-books">
+              <img src="assets/img/6.png" class="img-fluid" alt="">
               <div class="portfolio-info">
                 <h4>CG</h4>
                 <p>Lorem ipsum, dolor sit amet consectetur</p>
-                <a href="./assets/img/portfolio/books-1.jpg" title="Branding 1" data-gallery="portfolio-gallery-book"
-                  class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                <a href="./portfolio-details" title="More Details" class="details-link"><i
-                    class="bi bi-link-45deg"></i></a>
+                <a href="assets/img/6.png" title="image 4" data-gallery="portfolio-gallery-book" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                <a href="index" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
               </div>
             </div><!-- End Portfolio Item -->
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
-              <img src="./assets/img/7.png" class="img-fluid" alt="">
+          
+            
+            <div class="col-lg-4  col-sm-4 col-md-6 portfolio-item isotope-item filter-app">
+              <img src="assets/img/7.png" class="img-fluid" alt="">
               <div class="portfolio-info">
                 <h4>Cg</h4>
                 <p>Lorem ipsum, dolor sit amet consectetur</p>
-                <a href="./assets/img/portfolio/app-2.jpg" title="App 2" data-gallery="portfolio-gallery-app"
-                  class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                <a href="./portfolio-details" title="More Details" class="details-link"><i
-                    class="bi bi-link-45deg"></i></a>
+                <a href="assets/img/7.png" title="image 5" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                <a href="index" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
               </div>
             </div><!-- End Portfolio Item -->
 
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
-              <img src="./assets/img/5.jpg" class="img-fluid" alt="">
+            <div class="col-lg-4 col-sm-4 col-md-6 portfolio-item isotope-item filter-product">
+              <img src="assets/img/5.jpg" class="img-fluid" alt="">
               <div class="portfolio-info">
                 <h4>CG</h4>
                 <p>Lorem ipsum, dolor sit amet consectetur</p>
-                <a href="./assets/img/portfolio/product-2.jpg" title="Product 2"
-                  data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i
-                    class="bi bi-zoom-in"></i></a>
-                <a href="portfolio-details" title="More Details" class="details-link"><i
-                    class="bi bi-link-45deg"></i></a>
+                <a href="assets/img/5.jpg" title="image 6" data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                <a href="index" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
               </div>
             </div><!-- End Portfolio Item -->
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
+          </div>
+          <br>
+          <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
+            <div class="col-lg-4 col-sm-4 col-md-6 portfolio-item isotope-item filter-branding">
               <img src="assets/img/10.png" class="img-fluid" alt="">
               <div class="portfolio-info">
                 <h4>Cg</h4>
                 <p>Lorem ipsum, dolor sit amet consectetur</p>
-                <a href="assets/img/portfolio/branding-2.jpg" title="Branding 2"
-                  data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i
-                    class="bi bi-zoom-in"></i></a>
-                <a href="portfolio-details" title="More Details" class="details-link"><i
-                    class="bi bi-link-45deg"></i></a>
+                <a href="assets/img/10.png" title="image 7" data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                <a href="index" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
               </div>
             </div><!-- End Portfolio Item -->
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-books">
-              <img src="assets/img/11.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Cg</h4>
-                <p>Lorem ipsum, dolor sit amet consectetur</p>
-                <a href="assets/img/portfolio/books-2.jpg" title="Branding 2" data-gallery="portfolio-gallery-book"
-                  class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                <a href="portfolio-details" title="More Details" class="details-link"><i
-                    class="bi bi-link-45deg"></i></a>
-              </div>
-            </div><!-- End Portfolio Item -->
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
-              <img src="assets/img/3.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Cg</h4>
-                <p>Lorem ipsum, dolor sit amet consectetur</p>
-                <a href="assets/img/portfolio/app-3.jpg" title="App 3" data-gallery="portfolio-gallery-app"
-                  class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                <a href="portfolio-details" title="More Details" class="details-link"><i
-                    class="bi bi-link-45deg"></i></a>
-              </div>
-            </div><!-- End Portfolio Item -->
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
-              <img src="assets/img/2 (1).jpeg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Cg</h4>
-                <p>Lorem ipsum, dolor sit amet consectetur</p>
-                <a href="assets/img/portfolio/product-3.jpg" title="Product 3" data-gallery="portfolio-gallery-product"
-                  class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                <a href="portfolio-details" title="More Details" class="details-link"><i
-                    class="bi bi-link-45deg"></i></a>
-              </div>
-            </div><!-- End Portfolio Item -->
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
+          
+         
+            <div class="col-lg-4 col-sm-4 col-md-6 portfolio-item isotope-item filter-books">
               <img src="assets/img/1.jpg" class="img-fluid" alt="">
               <div class="portfolio-info">
                 <h4>Cg</h4>
                 <p>Lorem ipsum, dolor sit amet consectetur</p>
-                <a href="assets/img/portfolio/branding-3.jpg" title="Branding 2"
-                  data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i
-                    class="bi bi-zoom-in"></i></a>
-                <a href="portfolio-details" title="More Details" class="details-link"><i
-                    class="bi bi-link-45deg"></i></a>
+                <a href="assets/img/1.jpg" title="image 8" data-gallery="portfolio-gallery-book" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                <a href="index" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
               </div>
             </div><!-- End Portfolio Item -->
 
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-books">
+            <div class="col-lg-4 col-sm-4 col-md-6 portfolio-item isotope-item filter-app">
+              <img src="assets/img/3.jpg" class="img-fluid" alt="">
+              <div class="portfolio-info">
+                <h4>Cg</h4>
+                <p>Lorem ipsum, dolor sit amet consectetur</p>
+                <a href="assets/img/3.jpg" title="image 8" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                <a href="index" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
+              </div>
+            </div><!-- End Portfolio Item -->
+          </div>
+          <br>
+          <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
+            <div class=" col-sm-4 portfolio-item isotope-item filter-product">
+              <img src="assets/img/6.png" class="img-fluid" alt="">
+              <div class="portfolio-info">
+                <h4>Cg</h4>
+                <p>Lorem ipsum, dolor sit amet consectetur</p>
+                <a href="assets/img/6.png" title="image 9" data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                <a href="index" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
+              </div>
+            </div><!-- End Portfolio Item -->
+            
+           
+            <div class="col-sm-4  portfolio-item isotope-item filter-branding">
               <img src="assets/img/8.png" class="img-fluid" alt="">
               <div class="portfolio-info">
                 <h4>Cg</h4>
                 <p>Lorem ipsum, dolor sit amet consectetur</p>
-                <a href="assets/img/portfolio/books-3.jpg" title="Branding 3" data-gallery="portfolio-gallery-book"
-                  class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                <a href="portfolio-details" title="More Details" class="details-link"><i
-                    class="bi bi-link-45deg"></i></a>
+                <a href="assets/img/8.png" title="image 10" data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                <a href="index" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
               </div>
             </div><!-- End Portfolio Item -->
 
+            <div class=" col-sm-4 portfolio-item isotope-item filter-books">
+              <img src="assets/img/12.png" class="img-fluid" alt="">
+              <div class="portfolio-info">
+                <h4>Cg</h4>
+                <p>Lorem ipsum, dolor sit amet consectetur</p>
+                <a href="assets/img/12.png" title="image 11" data-gallery="portfolio-gallery-book" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                <a href="index" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
+              </div>
+            </div><!-- End Portfolio Item -->
           </div><!-- End Portfolio Container -->
 
         </div>
@@ -463,12 +449,9 @@
       </div>
 
     </section><!-- /Portfolio Section -->
-
     <!-- Clients Section -->
     <section id="clients" class="clients section">
-
       <div class="container" data-aos="fade-up" data-aos-delay="100">
-
         <div class="row g-0 clients-wrap">
 
           <div class="col-xl-3 col-md-4 client-logo">
@@ -524,18 +507,18 @@
               <p>A108 Adam Street</p>
               <p>Civil Lines, Prayagraj</p>
               <p class="mt-3"><strong>Phone:</strong> <span>+0532 969 070</span></p>
-              <p><strong>Email:</strong> <span>eparksupport@gmail.com</span></p>
+              <p><strong>Email:</strong> <span>eparkgateway@gmail.com</span></p>
             </div>
           </div>
 
           <div class="col-lg-2 col-md-3 footer-links">
             <h4>Useful Links</h4>
             <ul>
-              <li><a href="#">Home</a></li>
-              <li><a href="#">About us</a></li>
-              <li><a href="#">Services</a></li>
-              <li><a href="#">Terms of service</a></li>
-              <li><a href="#">Privacy policy</a></li>
+              <li><a href="index">Home</a></li>
+              <li><a href="about">About us</a></li>
+              <li><a href="services">Services</a></li>
+              <li><a href="privacy">Terms of service</a></li>
+              <li><a href="privacy">Privacy policy</a></li>
             </ul>
           </div>
 
@@ -544,8 +527,8 @@
             <ul>
               <li><a href="#">Ticket Booking</a></li>
               <li><a href="#">Chatbot</a></li>
-              <li><a href="#">Events and Updates</a></li>
-              <li><a href="#">What our user said</a></li>
+              <li><a href="blog">Events and Updates</a></li>
+              <li><a href="testimonials">What our user said</a></li>
               <li><a href="#">Want to have website like us - Developers Contact</a></li>
             </ul>
           </div>
@@ -626,7 +609,31 @@
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
+  <script>
+    window.addEventListener('load', function () {
+      const alert = document.querySelector('.alert');
 
+      if (alert) {
+        // Set a timeout to add the fade-out class after 1.5 seconds
+        setTimeout(() => {
+          alert.classList.add('fade-out');
+
+          // Remove the alert from the DOM after the fade transition (0.5s)
+          setTimeout(() => alert.remove(), 500);
+        }, 1500);
+      }
+    });
+  </script>
+  <script>
+  document.addEventListener('keydown', function (e) {
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'u') {
+      e.preventDefault();
+      alert('Viewing source is disabled on this page.');
+    }
+  });
+</script>
 </body>
 
 </html>

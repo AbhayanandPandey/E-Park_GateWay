@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Park-Gateway | Accessible</title>
+    <link rel="icon" href="data/images/logo.jpb.jpg">
+    <link 
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+
+    <link rel="icon" href="data/images/logo.jpb.jpg">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #dfdfdf;
+            font-family: Arial, sans-serif;
+        }
+        .otp-container {
+            display: flex;
+            gap: 10px;
+        }
+
+        input[type="text"] {
+            width: 50px;
+            height: 50px;
+            font-size: 24px;
+            text-align: center;
+            border: 2px solid #333;
+            border-radius: 8px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus {
+            border-color: #4CAF50;
+            box-shadow: 0 0 8px #4CAF50;
+        }
+
+        .button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background-color: #f03c02;
+        }
+
+        .container {
+            text-align: center;
+            background-color: #f0f0f0;
+            padding: 40px;
+            padding-left: 15px;
+            padding-right: 15px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form id="otpForm" action="/otp" method="POST">
+            <div class="otp-container">
+                <p>You are not able to access this page Plz login</p>
+            </div>
+            <a href="/loginsignup"><button type="button" id="resendButton" class="button" value="Login"
+                    style="margin-top: 10px;">
+                    Login
+                </button></a>
+            <br>
+            <p style="margin-top: 5px;">
+                <a href="/" style="text-decoration: none;font-size:14px">Go Back</a>
+            </p>
+        </form>
+    </div>
+</body>
+
+</html>

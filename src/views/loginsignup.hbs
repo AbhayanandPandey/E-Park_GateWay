@@ -1,111 +1,184 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-    <link rel="icon" href="data/images/logo.jpb.jpg">
-    <link rel="stylesheet" href="data/css/signupandforgot.css">
-    <title>Sign in & Sign up Form</title>
-    <style>
-      
-    </style>
-  </head>
-  <body>
-    <div class="container">
-      <div class="forms-container">
-        <div class="signin-signup">
-          <form action="/login" method="POST" class="sign-in-form">
-            <h2 class="title">Sign in</h2>
-            <div class="input-field">
-              <i class="fas fa-user"></i>
-              <input type="text" name="log_name" placeholder="E-mail" required />
-            </div>
-            <div class="input-field">
-              <i class="fas fa-lock"></i>
-              <input type="password" name="log_password" placeholder="Password" required />
-            </div>
-            <input type="submit" value="Login" class="btn solid" />
-            <p ><a href="/forgot">Forgot password</a></p>
-            <p class="social-text">Or Sign in with social platforms</p>
-            <div class="social-media">
-              <a href="#" class="social-icon">
-                <i class="fab fa-facebook-f"></i>
-              </a>
-              <a href="#" class="social-icon">
-                <i class="fab fa-twitter"></i>
-              </a>
-              <a href="#" class="social-icon">
-                <i class="fab fa-google"></i>
-              </a>
-              <a href="#" class="social-icon">
-                <i class="fab fa-linkedin-in"></i>
-              </a>
-            </div>
-          </form>
-          <form action="/register" method="POST" class="sign-up-form">
-            <h2 class="title">Sign up</h2>
-            <div class="input-field">
-              <i class="fas fa-user"></i>
-              <input type="text" name="User_name" placeholder="Username" />
-            </div>
-            <div class="input-field">
-              <i class="fas fa-envelope"></i>
-              <input type="email" name="email" placeholder="Email" />
-            </div>
-            <div class="input-field">
-              <i class="fas fa-lock"></i>
-              <input type="password" name="password" placeholder="Password" />
-            </div>
-            <input type="submit" class="btn" value="Sign up" />
-            <p class="social-text">Or Sign up with social platforms</p>
-            <div class="social-media">
-              <a href="#" class="social-icon">
-                <i class="fab fa-facebook-f"></i>
-              </a>
-              <a href="#" class="social-icon">
-                <i class="fab fa-twitter"></i>
-              </a>
-              <a href="#" class="social-icon">
-                <i class="fab fa-google"></i>
-              </a>
-              <a href="#" class="social-icon">
-                <i class="fab fa-linkedin-in"></i>
-              </a>
-            </div>
-          </form>
-        </div>
-      </div>
 
-      <div class="panels-container">
-        <div class="panel left-panel">
-          <div class="content">
-            <h3>New here ?</h3>
-            <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis,
-              ex ratione. Aliquid!
-            </p>
-            <button class="btn transparent" id="sign-up-btn">
-              Sign up
-            </button>
+<head>
+  <meta charset="UTF-8" />
+  {{!--
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"> --}}
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="data/images/logo.jpb.jpg">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <link rel="icon" href="data/images/logo.jpb.jpg">
+  <link rel="stylesheet" href="data/css/signupandforgot.css">
+  <title>E-Park-Gateway | Sign in & Sign up Form</title>
+  <style>
+    .alert {
+      text-align: center;
+      position: absolute;
+      z-index: 8;
+      padding: 0.75rem 1.25rem;
+      margin-bottom: 1rem;
+      width: 100%;
+      border: 1px solid transparent;
+      border-radius: 0.25rem;
+    }
+
+    /* Success Alert (Green) */
+    .alert-success {
+      color: #0f5132;
+      background-color: #d1e7dd;
+      border-color: #badbcc;
+    }
+
+    /* Danger Alert (Red) */
+    .alert-danger {
+      color: #842029;
+      background-color: #f8d7da;
+      border-color: #f5c2c7;
+    }
+
+    /* Dismissible Alert Styles */
+    .alert-dismissible {
+      padding-right: 3rem;
+    }
+
+    .alert-dismissible .btn-close {
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding: 0.75rem 1.25rem;
+      color: inherit;
+    }
+
+    /* Fade and Show for Alerts */
+    .fade {
+      transition: opacity 0.15s linear;
+    }
+
+    .show {
+      opacity: 1;
+    }
+  </style>
+</head>
+
+<body>
+  {{#if alertMessage}}
+  <div class="alert alert-{{alertType}} alert-dismissible fade show" role="alert">
+    {{alertMessage}}
+  </div>
+  {{/if}}
+  <div class="container">
+    <div class="forms-container">
+      <div class="signin-signup">
+        <form action="/login" method="POST" class="sign-in-form">
+          <h2 class="title">Sign in</h2>
+          <div class="input-field">
+            <i class="fas fa-user"></i>
+            <input type="text" name="log_name" placeholder="E-mail" required />
           </div>
-          <img src="data/img/log.svg" class="image" alt="" />
-        </div>
-        <div class="panel right-panel">
-          <div class="content">
-            <h3>One of us ?</h3>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
-              laboriosam ad deleniti.
-            </p>
-            <button class="btn transparent" id="sign-in-btn">
-              Sign in
-            </button>
+          <div class="input-field">
+            <i class="fas fa-lock"></i>
+            <input type="password" name="log_password" placeholder="Password" required />
           </div>
-          <img src="data/images/register.svg" class="image" alt="" />
-        </div>
+          <input type="submit" value="Login" class="btn solid" />
+          <p><a href="/forgot">Forgot password</a></p>
+          <p class="social-text">Or Sign in with social platforms</p>
+          <div class="social-media">
+            <a href="#" class="social-icon">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" class="social-icon">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" class="social-icon">
+              <i class="fab fa-google"></i>
+            </a>
+            <a href="#" class="social-icon">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+          </div>
+        </form>
+        <form action="/register" method="POST" class="sign-up-form">
+          <h2 class="title">Sign up</h2>
+          <div class="input-field">
+            <i class="fas fa-user"></i>
+            <input type="text" name="User_name" placeholder="Username" />
+          </div>
+          <div class="input-field">
+            <i class="fas fa-envelope"></i>
+            <input type="email" name="email" placeholder="Email" />
+          </div>
+          <div class="input-field">
+            <i class="fas fa-lock"></i>
+            <input type="password" name="password" placeholder="Password" />
+          </div>
+          <input type="submit" class="btn" value="Sign up" />
+          <p class="social-text">Or Sign up with social platforms</p>
+          <div class="social-media">
+            <a href="#" class="social-icon">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" class="social-icon">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" class="social-icon">
+              <i class="fab fa-google"></i>
+            </a>
+            <a href="#" class="social-icon">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+          </div>
+        </form>
       </div>
     </div>
+
+    <div class="panels-container">
+      <div class="panel left-panel">
+        <div class="content">
+          <h3>New here ?</h3>
+          <p>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis,
+            ex ratione. Aliquid!
+          </p>
+          <button class="btn transparent" id="sign-up-btn">
+            Sign up
+          </button>
+        </div>
+        <img src="data/img/log.svg" class="image" alt="" />
+      </div>
+      <div class="panel right-panel">
+        <div class="content">
+          <h3>One of us ?</h3>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
+            laboriosam ad deleniti.
+          </p>
+          <button class="btn transparent" id="sign-in-btn">
+            Sign in
+          </button>
+        </div>
+        <img src="data/images/register.svg" class="image" alt="" />
+      </div>
+    </div>
+  </div>
   <script src="data/js/app.js"></script>
-  </body>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
+  <script>
+    window.addEventListener('load', function () {
+      const alert = document.querySelector('.alert');
+
+      if (alert) {
+        // Set a timeout to add the fade-out class after 1.5 seconds
+        setTimeout(() => {
+          alert.classList.add('fade-out');
+
+          // Remove the alert from the DOM after the fade transition (0.5s)
+          setTimeout(() => alert.remove(), 500);
+        }, 1500);
+      }
+    });
+  </script>
+</body>
+
 </html>

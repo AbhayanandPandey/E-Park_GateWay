@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Park-Gateway | OTP </title>
+  <link rel="icon" href="data/images/logo.jpb.jpg">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f03c02;
+            font-family: Arial, sans-serif;
+        }
+
+        .otp-container {
+            display: flex;
+            gap: 10px;
+        }
+
+        input[type="text"] {
+            width: 50px;
+            height: 50px;
+            font-size: 24px;
+            text-align: center;
+            border: 2px solid #333;
+            border-radius: 8px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus {
+            border-color: #4CAF50;
+            box-shadow: 0 0 8px #4CAF50;
+        }
+
+        .button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background-color: #f03c02;
+        }
+
+        .container {
+            text-align: center;
+            background-color: #f0f0f0;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+    <style>
+        .alert {
+            text-align: center;
+            position: absolute;
+            z-index: 8;
+            padding: 0.75rem 1.25rem;
+            margin-bottom: 1rem;
+            width: 100%;
+            top: 0%;
+            border: 1px solid transparent;
+            border-radius: 0.25rem;
+        }
+
+        .alert-success {
+            color: #0f5132;
+            background-color: #d1e7dd;
+            border-color: #badbcc;
+        }
+
+        /* Danger Alert (Red) */
+        .alert-danger {
+            color: #842029;
+            background-color: #f8d7da;
+            border-color: #f5c2c7;
+        }
+
+        /* Dismissible Alert Styles */
+        .alert-dismissible {
+            padding-right: 3rem;
+        }
+
+        .alert-dismissible .btn-close {
+            position: absolute;
+            top: 0;
+            right: 0;
+            padding: 0.75rem 1.25rem;
+            color: inherit;
+        }
+
+        /* Fade and Show for Alerts */
+        .fade {
+            transition: opacity 0.15s linear;
+        }
+
+        .show {
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body>
+    {{#if alertMessage}}
+    <div class="alert alert-{{alertType}} alert-dismissible fade show" role="alert">
+        {{alertMessage}}
+    </div>
+    {{/if}}
+
+
+    <div class="container">
+        <form id="otpForm" action="/otp" method="POST">
+            <div class="otp-container">
+                <input type="text" maxlength="1" pattern="[0-9]*" inputmode="numeric" required>
+                <input type="text" maxlength="1" pattern="[0-9]*" inputmode="numeric" required>
+                <input type="text" maxlength="1" pattern="[0-9]*" inputmode="numeric" required>
+                <input type="text" maxlength="1" pattern="[0-9]*" inputmode="numeric" required>
+            </div>
+            <input type="hidden" name="conotp" id="conotp">
+            <input type="submit" value="Submit OTP" class="button">
+
+            <button type="button" id="resendButton" class="button" style="margin-top: 10px;">Resend OTP</button>
+            <p id="timer" style="margin-top: 5px; color: red;"> <span id="time"></span></p>
+
+            <p style="margin-top: 5px;">
+                <a href="/forgot" style="text-decoration: none;">Go Back</a>
+            </p>
+        </form>
+    </div>
+
+    <script>
+        // OTP input and timer logic
+        const otpInputs = document.querySelectorAll('.otp-container input');
+        const hiddenOTPInput = document.getElementById('conotp');
+        const resendButton = document.getElementById('resendButton');
+        const timerDisplay = document.getElementById('time');
+        const timerDisplayz = document.getElementById('timer');
+
+        const RESEND_INTERVAL = 30; // 30 seconds for the resend timer
+
+        // Function to get remaining time from localStorage
+        function getRemainingTime() {
+            const lastSent = localStorage.getItem('otpLastSent');
+            if (!lastSent) return RESEND_INTERVAL;  // If no OTP sent before, return full resend interval
+            const elapsed = Math.floor((Date.now() - parseInt(lastSent, 10)) / 1000);
+            return Math.max(RESEND_INTERVAL - elapsed, 0);  // Ensure time doesn't go below 0
+        }
+
+        // Start the timer on page load or resend
+        function startTimer() {
+            let timeLeft = getRemainingTime();
+
+
+
+            const timer = setInterval(() => {
+                if (timeLeft > 0) {
+                    timeLeft--;
+                    const seconds = timeLeft;
+                    timerDisplayz.textContent = `Resend available in: ${seconds < 10 ? '0' : ''}${seconds}`;  // Update countdown
+                    if (timeLeft === 0) {
+                        clearInterval(timer);
+                        resendButton.disabled = false; // Enable the resend button when timer is over
+                        timerDisplayz.textContent = '';
+                    }
+                }
+            }, 1000);
+        }
+
+        function resetOTPInputs() {
+            otpInputs.forEach(input => input.value = '');
+            hiddenOTPInput.value = '';  // Ensure hidden OTP field is reset
+        }
+
+        // Handle OTP input behavior
+        otpInputs.forEach((input, index) => {
+            input.addEventListener('input', () => {
+                if (input.value && index < otpInputs.length - 1) {
+                    otpInputs[index + 1].focus();  // Move to next input
+                }
+                hiddenOTPInput.value = Array.from(otpInputs).map(i => i.value).join('');  // Update hidden OTP input
+            });
+
+            input.addEventListener('keydown', (event) => {
+                if (event.key === 'Backspace' && index > 0 && !input.value) {
+                    otpInputs[index - 1].focus();  // Move to previous input on backspace
+                }
+            });
+        });
+
+  resendButton.addEventListener('click', () => {
+  fetch('/Resend-OTP', { method: 'POST' })
+    .then(response => {
+      if (response.status === 200) {
+        response.text().then(message => {
+          //alert(message);  // You can use a custom alert here
+          localStorage.setItem('otpLastSent', Date.now());  // Store the time OTP was last sent
+          startTimer();  // Start the resend timer
+
+          // Show success message (you can use your custom notification system)
+          showMessage("OTP resent successfully.", "success");
+        });
+      } else if (response.status === 429) {
+        response.text().then(message => {
+          //alert(message);  // You can use a custom alert here
+          
+          // Show error message (you can use your custom notification system)
+          showMessage(message, "danger");
+        });
+      }
+    })
+    .catch(error => console.error('Error resending OTP:', error));
+});
+
+function showMessage(message, type) {
+  // Check if there's already an alert message rendered by Handlebars
+  const existingAlert = document.querySelector('.alert');
+  if (existingAlert) {
+    // If the alert exists, update its message and type
+    existingAlert.textContent = message;
+    existingAlert.classList.remove("alert-success", "alert-danger");
+    existingAlert.classList.add(`alert-${type}`);
+    const alertMessage = req.session.alertMessage;
+  const alertType = req.session.alertType;
+
+  // Clear the session after using it
+  req.session.alertMessage = null;
+  req.session.alertType = null;
+  } else {
+    // If no alert exists, create a new one
+    const alertBox = document.createElement("div");
+    alertBox.classList.add("alert", `alert-${type}`, "alert-dismissible", "fade", "show");
+    alertBox.textContent = message;
+    document.body.appendChild(alertBox);
+
+    // Optionally, auto-remove the message after some time
+    setTimeout(() => alertBox.remove(), 1500);
+  }
+  const alertMessage = req.session.alertMessage;
+  const alertType = req.session.alertType;
+
+  // Clear the session after using it
+  req.session.alertMessage = null;
+  req.session.alertType = null;
+}
+
+        // Initialize everything on window load
+        window.addEventListener('load', () => {
+            startTimer(); // Start the timer immediately when the page loads or OTP is resent
+            resetOTPInputs(); // Reset OTP inputs on load
+        });
+
+    </script>
+    <script>
+        window.addEventListener('load', function () {
+            const alert = document.querySelector('.alert');
+
+            if (alert) {
+                // Set a timeout to add the fade-out class after 1.5 seconds
+                setTimeout(() => {
+                    alert.classList.add('fade-out');
+
+                    // Remove the alert from the DOM after the fade transition (0.5s)
+                    setTimeout(() => alert.remove(), 500);
+                }, 1500);
+            }
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

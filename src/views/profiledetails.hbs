@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E-Park-Gateway | Profile </title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f7f7f7;
+      margin: 0;
+      height: 100vh;
+      width: 100vw;
+    }
+
+    .background {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      width: 100%;
+      margin-top: 60px;
+      margin-bottom: 60px;
+
+      /* height: 100vh; */
+    }
+
+    .profile-container {
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      width: 300px;
+      padding: 25px;
+      text-align: center;
+      z-index: 2;
+    }
+
+    .profile-container img {
+      border-radius: 50%;
+      width: 80px;
+      height: 80px;
+      z-index: 2;
+    }
+
+    .profile-container h5 {
+      font-size: 14px;
+      margin: 0;
+    }
+
+    .profile-container h2 {
+      font-size: 18px;
+      margin: 5px 0;
+      color: #333;
+    }
+
+    .menu-item {
+      display: flex;
+      align-items: center;
+      padding: 10px 15px;
+      margin: 10px 0;
+      border-radius: 5px;
+      color: #555;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .menu-item:hover {
+      background-color: #f0f0f0;
+    }
+
+    .menu-item i {
+      font-size: 18px;
+      margin-right: 10px;
+    }
+/* Disable scrolling when modal is open */
+.no-scroll {
+  overflow: hidden;
+  height: 100vh;
+}
+label
+  {
+        text-align: left;
+    padding: 3px;
+  }
+/* Modal Background (Overlay) */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Dark transparent overlay */
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+/* Modal Box */
+.edit-profile-popup {
+  background: white;
+  width: 90%; /* Use percentage for responsiveness */
+  max-width: 400px; /* Limit maximum width */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* Input Fields */
+.edit-profile-popup input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Buttons */
+.edit-profile-popup button {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.edit-profile-popup button:first-of-type {
+  background: #4CAF50;
+  color: white;
+}
+
+.edit-profile-popup button:last-of-type {
+  background: #f44336;
+  color: white;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+  .edit-profile-popup {
+    width: 95%; /* Full width on small screens */
+    padding: 15px;
+  }
+.no-scroll {
+  overflow: hidden;
+  height: 100vh;
+}
+  .edit-profile-popup h2 {
+    font-size: 18px;
+  }
+
+  .edit-profile-popup button {
+    font-size: 14px;
+    padding: 8px;
+  }
+  
+}
+  </style>
+ 
+  <link href="./assets/img/favicon.png" rel="icon">
+  <link href="./assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link rel="icon" href="data/images/logo.jpb.jpg">
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet">
+  <link href="./assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="./assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="./assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="./assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="./assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="./assets/css/main.css" rel="stylesheet">
+  <style>
+    .header {
+    color: var(--default-color);
+    transition: all 0.5s;
+    z-index: 9;
+    background-color: var(--background-color);
+}
+  </style>
+   <style>
+        .alert {
+            text-align: center;
+            position: absolute;
+            z-index: 999;
+            padding: 0.75rem 1.25rem;
+            margin-bottom: 1rem;
+            width: 100%;
+            top: 0%;
+            border: 1px solid transparent;
+            border-radius: 0.25rem;
+        }
+
+        .alert-success {
+            z-index: 999;
+            color: #0f5132;
+            background-color: #d1e7dd;
+            border-color: #badbcc;
+        }
+
+        /* Danger Alert (Red) */
+        .alert-danger {
+            color: #842029;
+            background-color: #f8d7da;
+            z-index: 999;
+            border-color: #f5c2c7;
+        }
+
+        /* Dismissible Alert Styles */
+        .alert-dismissible {
+            z-index: 999;
+            padding-right: 3rem;
+        }
+
+        .alert-dismissible .btn-close {
+            position: absolute;
+            top: 0;
+            z-index: 999;
+            right: 0;
+            padding: 0.75rem 1.25rem;
+            color: inherit;
+        }
+
+        /* Fade and Show for Alerts */
+        .fade {
+            z-index: 999;
+            transition: opacity 0.15s linear;
+        }
+
+        .show {
+            z-index: 999;
+            opacity: 1;
+        }
+        
+    </style>
+    <style>
+  .edit-tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+
+  .edit-tabs button {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    background: #ccc;
+    cursor: pointer;
+  }
+
+  .edit-tabs button.active {
+    background: #007bff;
+    color: white;
+  }
+
+  .save-btn {
+    background-color: #28a745;
+    color: white;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+  }
+
+  .cancel-btn {
+    background-color: #dc3545;
+    color: white;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    margin-top: 5px;
+  }
+</style>
+</head>
+<body >
+{{#if alertMessage}}
+  <div class="alert alert-{{alertType}} alert-dismissible fade show" role="alert">
+    {{alertMessage}}
+  </div>
+{{/if}}
+  
+  <header id="header" class="header sticky-top">
+
+    <div class="topbar d-flex align-items-center light-background">
+      <div class="container d-flex justify-content-center justify-content-md-between">
+        <div class="contact-info d-flex align-items-center">
+          <i class="bi bi-envelope d-flex align-items-center"><a
+              href="mailto:contact@example.com">eparkgateway@gmail.com</a></i>
+          <i class="bi bi-phone d-flex align-items-center ms-4"><span>+0532 969 070</span></i>
+        </div>
+        <div class="social-links d-none d-md-flex align-items-center">
+          <a href="#" class="twitter"><i class="bi bi-twitter-x"></i></a>
+          <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+          <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+          <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="branding d-flex align-items-cente">
+
+      <div class="container position-relative d-flex align-items-center justify-content-between">
+        <a href="index" class="logo d-flex align-items-center">
+          <h1 class="sitename">E - Park Gateway</h1>
+        </a>
+        <nav id="navmenu" class="navmenu">
+          <ul>
+            <li><a href="index">Home<br></a></li>
+            <li><a href="about">About</a></li>
+            <li><a href="services">Services</a></li>
+            <li><a href="testimonials">Testimonials</a></li>
+            <li><a href="pricing">Pricing</a></li>
+            <li><a href="portfolio">Gallery</a></li>
+            <li><a href="blog">Updates/Events</a></li>
+            <li class="dropdown"><a href="#"><span>Parks</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+              <ul>
+                <li class="dropdown"><a href="hathipark"><span>Hati park</span> <i
+                      class="bi bi-chevron-down toggle-dropdown"></i></a>
+                  <ul>
+                    <li><a href="#">View Gallery</a></li>
+                    <li><a href="#">Events</a></li>
+                  </ul>
+                </li>
+
+                <li class="dropdown"><a href="companygarden"><span>Company garden/Alfred Park</span> <i
+                      class="bi bi-chevron-down toggle-dropdown"></i></a>
+                  <ul>
+                    <li><a href="#">Events</a></li>
+                    <li><a href="#">View Gallery</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li><a href="contact">Contact</a></li>
+
+            <li><a href="profiledetails" class="active">Profile</a></li>
+
+          </ul>
+          <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+
+<div class="background">
+  <div class="profile-container">
+    <img src="./data/img/prof.png" alt="Profile Picture">
+    <h2><span id="username"></span></h2>
+    <h5><span id="useremail"></span></h5>
+    <div class="menu-item" id="editProfileBtn">
+      <i class="fa-solid fa-user"></i>
+      <span>Edit Profile</span>
+    </div>
+    <div class="menu-item">
+      <i class="fa-solid fa-gear"></i>
+      <span>Settings & Privacy</span>
+    </div>
+    <div class="menu-item">
+      <i class="fa-solid fa-circle-question"></i>
+      <span>Help & Support</span>
+    </div>
+    <div class="menu-item" onclick="logout()">
+      <a href="logout" style="text-decoration: none; color: #555;">
+        <i class="fa-solid fa-right-from-bracket"></i>
+        <span >LogOut</span>
+      </a>
+    </div>
+  </div>
+</div>
+<div id="modalOverlay" class="modal-overlay">
+  <div class="edit-profile-popup">
+    <h2>Edit Profile</h2>
+    <div class="edit-tabs">
+      <button type="button" id="passwordTab" class="active">Password</button>
+      <button type="button" id="otpTab">OTP</button>
+    </div>
+    <form action="/update-profile" method="POST"  id="updateForm">
+      <label for="newUsername" style="display: none;">New Username:</label>
+    <input type="text" id="ueml" name="ueml" placeholder="Enter new username" style="display: none;">
+
+      <label for="newUsername">New Username:</label>
+      <input type="text" id="newUsername" name="newUsername" placeholder="Enter new username" required>
+
+      <label for="newEmail">New Email:</label>
+      <input type="email" id="newEmail" name="newEmail" placeholder="Enter new email" required>
+
+      <div id="passwordSection">
+        <label for="currentPassword">Current Password:</label>
+        <input type="password" id="currentPassword" name="currentPassword" placeholder="Enter current password" required>
+      </div>
+      <div id="otpSection" style="display: none;">
+        <button type="button" id="sendOtpBtn">Send OTP</button>
+        <input type="text" id="otpInput" name="otpInput" placeholder="Enter OTP" style="display: none;" required>
+      </div>
+
+      <button type="submit" id="save1">Save</button>
+      <button type="button" id="save2" style="display: none; background: #4CAF50;
+    color: white;">Save1</button>
+      <button type="button" id="closeModalBtn">Cancel</button>
+    </form>
+  </div>
+</div>
+<div class="menu-item" id="editProfileBtn">
+</div>
+
+  <footer id="footer" class="footer dark-background">
+
+    <div class="footer-top">
+      <div class="container">
+        <div class="row gy-4">
+          <div class="col-lg-4 col-md-6 footer-about">
+            <a href="index" class="logo d-flex align-items-center">
+              <span class="sitename">E- Park Gateway</span>
+            </a>
+            <div class="footer-contact pt-3">
+              <p>A108 Adam Street</p>
+              <p>Civil Lines, Prayagraj</p>
+              <p class="mt-3"><strong>Phone:</strong> <span>+0532 969 070</span></p>
+              <p><strong>Email:</strong> <span>eparkgateway@gmail.com</span></p>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-3 footer-links">
+            <h4>Useful Links</h4>
+            <ul>
+              <li><a href="index">Home</a></li>
+              <li><a href="about">About us</a></li>
+              <li><a href="services">Services</a></li>
+              <li><a href="privacy">Terms of service</a></li>
+              <li><a href="privacy">Privacy policy</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-2 col-md-3 footer-links">
+            <h4>Our Services</h4>
+            <ul>
+              <li><a href="#">Ticket Booking</a></li>
+              <li><a href="#">Chatbot</a></li>
+              <li><a href="blog">Events and Updates</a></li>
+              <li><a href="testimonials">What our user said</a></li>
+              <li><a href="#">Want to have website like us - Developers Contact</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-2 col-md-3 footer-links">
+            <h4>Hic solutasetp</h4>
+            <ul>
+              <li><a href="#">Molestiae accusamus iure</a></li>
+              <li><a href="#">Excepturi dignissimos</a></li>
+              <li><a href="#">Suscipit distinctio</a></li>
+              <li><a href="#">Dilecta</a></li>
+              <li><a href="#">Sit quas consectetur</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-2 col-md-3 footer-links">
+            <h4>Nobis illum</h4>
+            <ul>
+              <li><a href="#">Ipsam</a></li>
+              <li><a href="#">Laudantium dolorum</a></li>
+              <li><a href="#">Dinera</a></li>
+              <li><a href="#">Trodelas</a></li>
+              <li><a href="#">Flexo</a></li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="copyright text-center">
+      <div
+        class="container d-flex flex-column flex-lg-row justify-content-center justify-content-lg-between align-items-center">
+
+        <div class="d-flex flex-column align-items-center align-items-lg-start">
+          <div>
+            © Copyright <strong><span>Prayagraj Gateway</span></strong>. All Rights Reserved
+          </div>
+          <div class="credits">
+
+            Featured By <a href="#">United Students</a>
+          </div>
+        </div>
+
+        <div class="social-links order-first order-lg-last mb-3 mb-lg-0">
+          <a href=""><i class="bi bi-twitter-x"></i></a>
+          <a href=""><i class="bi bi-facebook"></i></a>
+          <a href=""><i class="bi bi-instagram"></i></a>
+          <a href=""><i class="bi bi-linkedin"></i></a>
+        </div>
+
+      </div>
+    </div>
+
+  </footer>
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
+  <div id="preloader">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+
+  {{!-- roughh --}}
+  <script>
+    const userName = "{{userN}}";
+    const userEmail = "{{userE}}";
+    document.getElementById("username").textContent = userName;
+    document.getElementById("useremail").textContent = userEmail;
+    document.getElementById("newUsername").value = userName;
+    document.getElementById("ueml").value = userEmail;
+    document.getElementById("newEmail").value = userEmail;
+  </script>
+  
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
+  <script>
+  function openModal() {
+  document.getElementById("modalOverlay").style.display = "flex";
+  document.body.classList.add("no-scroll"); // Disable background scrolling
+}
+
+function closeModal() {
+  document.getElementById("modalOverlay").style.display = "none";
+  document.body.classList.remove("no-scroll"); // Enable scrolling
+}
+
+function saveProfile() {
+  const newUsername = document.getElementById("newUsername").value;
+  const newEmail = document.getElementById("newEmail").value;
+
+  if (newUsername) document.getElementById("username").textContent = newUsername;
+  if (newEmail) document.getElementById("useremail").textContent = newEmail;
+
+  closeModal();
+}
+
+document.getElementById("editProfileBtn").addEventListener("click", openModal);
+document.getElementById("closeModalBtn").addEventListener("click", closeModal);
+
+</script>
+ <script>
+  setTimeout(() => {
+    document.querySelector(".alert")?.classList.add("fade-out");
+  }, 3000);
+function logout() {
+    // Clear Local Storage
+    localStorage.clear();
+    
+    // Clear Session Storage
+    sessionStorage.clear();
+
+    // Clear Cookies (optional, but recommended)
+    document.cookie = "authToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    document.cookie = "connect.sid=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+
+    console.log("Local storage, session storage, and cookies cleared");
+
+    // Redirect to login page
+    window.location.href = "/loginsignup";
+}
+</script>
+<script>
+  document.getElementById("passwordTab").addEventListener("click", () => {
+    document.getElementById("passwordSection").style.display = "block";
+    document.getElementById("otpSection").style.display = "none";
+    document.getElementById("save1").style.display = "block";
+    document.getElementById("save2").style.display = "none";
+
+    document.getElementById("passwordTab").classList.add("active");
+    document.getElementById("otpTab").classList.remove("active");
+  });
+
+  document.getElementById("otpTab").addEventListener("click", () => {
+    document.getElementById("passwordSection").style.display = "none";
+    document.getElementById("save2").style.display = "block";
+    document.getElementById("save1").style.display = "none";
+    document.getElementById("otpSection").style.display = "block";
+    document.getElementById("passwordTab").classList.remove("active");
+    document.getElementById("otpTab").classList.add("active");
+  });
+
+  document.getElementById("sendOtpBtn").addEventListener("click", async () => {
+  document.getElementById("otpInput").style.display = "block"; // Show OTP input
+  const email = document.getElementById("ueml").value.trim(); // Get email input
+  if (!email) {
+    alert("Please enter an email!");
+    return;
+  }
+  try {
+    const res = await fetch("/Edit-profile-details", {
+      method: "POST", 
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email }) 
+    });
+
+    const responseData = await res.text();
+    document.getElementById("response").innerHTML = responseData; // Show response
+  } catch (error) {
+    console.error("Error:", error);
+    document.getElementById("response").innerHTML = "Failed to send OTP.";
+  }
+});
+
+
+document.getElementById("save2").addEventListener("click", async () => {
+  const otp = document.getElementById("otpInput").value.trim();
+  const email = document.getElementById("ueml").value.trim(); // Fixed incorrect ID
+  const cemail = document.getElementById("newEmail").value.trim(); // Fixed incorrect ID
+  const name = document.getElementById("newUsername").value.trim();
+
+  try {
+    const res = await fetch("/conf-OTP", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ otp, email, cemail, name }),
+    });
+
+    const responseData = await res.json(); 
+    alert(responseData.message); 
+    if (responseData.redirect) {
+      window.location.href = responseData.redirect; // Redirect on success
+    }
+  } catch (error) {
+    console.error("Error:", error);
+  }
+});
+
+/* document.getElementById("save1").addEventListener("click", async () => {
+  const currentPassword = document.getElementById("currentPassword").value.trim();
+  const ueml = document.getElementById("ueml").value.trim(); // Fixed incorrect ID
+  const newEmail = document.getElementById("newEmail").value.trim(); // Fixed incorrect ID
+  const newUsername = document.getElementById("newUsername").value.trim();
+
+  try {
+    const res = await fetch("/update-profile", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({  newEmail, newUsername,currentPassword, ueml }),
+    });
+
+    const responseData = await res.json(); // Expect JSON response
+    alert(responseData.message); // Display response message
+    if (responseData.redirect) {
+      window.location.href = responseData.redirect; // Redirect on success
+    }
+  } catch (error) {
+    console.error("Error:", error);
+  }
+})*/
+
+document.getElementById("save1").addEventListener("click", () => {
+    document.getElementById("updateForm").submit();
+});
+</script>
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+/* Base styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+}
+
+.profile {
+    margin-top: 50px;
+}
+
+.profile-card {
+    background-color: #fff;
+    border: 1px solid #e2e2e2;
+    border-radius: 10px;
+}
+
+.profile-card h3 {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.table {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.table th, .table td {
+    text-align: center;
+    padding: 8px;
+}
+
+#edit-profile-btn {
+    width: 200px;
+}
+
+footer {
+    background-color: #343a40;
+    color: #fff;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .profile-card {
+        padding: 20px;
+    }
+
+    .table th, .table td {
+        font-size: 12px;
+    }
+}
