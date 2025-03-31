@@ -14,7 +14,6 @@
       height: 100vh;
       width: 100vw;
     }
-
     .background {
       display: flex;
       justify-content: center;
@@ -23,10 +22,7 @@
       width: 100%;
       margin-top: 60px;
       margin-bottom: 60px;
-
-      /* height: 100vh; */
     }
-
     .profile-container {
       background-color: white;
       border-radius: 10px;
@@ -36,19 +32,16 @@
       text-align: center;
       z-index: 2;
     }
-
     .profile-container img {
       border-radius: 50%;
       width: 80px;
       height: 80px;
       z-index: 2;
     }
-
     .profile-container h5 {
       font-size: 14px;
       margin: 0;
     }
-
     .profile-container h2 {
       font-size: 18px;
       margin: 5px 0;
@@ -66,16 +59,13 @@
       cursor: pointer;
       transition: background-color 0.3s;
     }
-
     .menu-item:hover {
       background-color: #f0f0f0;
     }
-
     .menu-item i {
       font-size: 18px;
       margin-right: 10px;
     }
-/* Disable scrolling when modal is open */
 .no-scroll {
   overflow: hidden;
   height: 100vh;
@@ -85,7 +75,6 @@ label
         text-align: left;
     padding: 3px;
   }
-/* Modal Background (Overlay) */
 .modal-overlay {
   display: none;
   position: fixed;
@@ -93,17 +82,15 @@ label
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5); /* Dark transparent overlay */
+  background: rgba(0, 0, 0, 0.5);
   justify-content: center;
   align-items: center;
   z-index: 999;
 }
-
-/* Modal Box */
 .edit-profile-popup {
   background: white;
-  width: 90%; /* Use percentage for responsiveness */
-  max-width: 400px; /* Limit maximum width */
+  width: 90%; 
+  max-width: 400px; 
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -111,8 +98,6 @@ label
   flex-direction: column;
   position: relative;
 }
-
-/* Input Fields */
 .edit-profile-popup input {
   width: 100%;
   padding: 10px;
@@ -120,8 +105,6 @@ label
   border: 1px solid #ccc;
   border-radius: 5px;
 }
-
-/* Buttons */
 .edit-profile-popup button {
   width: 100%;
   padding: 10px;
@@ -131,21 +114,17 @@ label
   cursor: pointer;
   font-size: 16px;
 }
-
 .edit-profile-popup button:first-of-type {
   background: #4CAF50;
   color: white;
 }
-
 .edit-profile-popup button:last-of-type {
   background: #f44336;
   color: white;
 }
-
-/* Responsive Design */
 @media (max-width: 480px) {
   .edit-profile-popup {
-    width: 95%; /* Full width on small screens */
+    width: 95%; 
     padding: 15px;
   }
 .no-scroll {
@@ -155,15 +134,12 @@ label
   .edit-profile-popup h2 {
     font-size: 18px;
   }
-
   .edit-profile-popup button {
     font-size: 14px;
     padding: 8px;
   }
-  
 }
   </style>
- 
   <link href="./assets/img/favicon.png" rel="icon">
   <link href="./assets/img/apple-touch-icon.png" rel="apple-touch-icon">
   <link rel="icon" href="data/images/logo.jpb.jpg">
@@ -205,21 +181,16 @@ label
             background-color: #d1e7dd;
             border-color: #badbcc;
         }
-
-        /* Danger Alert (Red) */
         .alert-danger {
             color: #842029;
             background-color: #f8d7da;
             z-index: 999;
             border-color: #f5c2c7;
         }
-
-        /* Dismissible Alert Styles */
         .alert-dismissible {
             z-index: 999;
             padding-right: 3rem;
         }
-
         .alert-dismissible .btn-close {
             position: absolute;
             top: 0;
@@ -228,18 +199,14 @@ label
             padding: 0.75rem 1.25rem;
             color: inherit;
         }
-
-        /* Fade and Show for Alerts */
         .fade {
             z-index: 999;
             transition: opacity 0.15s linear;
         }
-
         .show {
             z-index: 999;
             opacity: 1;
         }
-        
     </style>
     <style>
   .edit-tabs {
@@ -247,7 +214,6 @@ label
     justify-content: center;
     margin-bottom: 10px;
   }
-
   .edit-tabs button {
     flex: 1;
     padding: 10px;
@@ -255,12 +221,10 @@ label
     background: #ccc;
     cursor: pointer;
   }
-
   .edit-tabs button.active {
     background: #007bff;
     color: white;
   }
-
   .save-btn {
     background-color: #28a745;
     color: white;
@@ -269,7 +233,6 @@ label
     border: none;
     cursor: pointer;
   }
-
   .cancel-btn {
     background-color: #dc3545;
     color: white;
@@ -287,9 +250,7 @@ label
     {{alertMessage}}
   </div>
 {{/if}}
-  
   <header id="header" class="header sticky-top">
-
     <div class="topbar d-flex align-items-center light-background">
       <div class="container d-flex justify-content-center justify-content-md-between">
         <div class="contact-info d-flex align-items-center">
@@ -306,7 +267,6 @@ label
       </div>
     </div>
     <div class="branding d-flex align-items-cente">
-
       <div class="container position-relative d-flex align-items-center justify-content-between">
         <a href="index" class="logo d-flex align-items-center">
           <h1 class="sitename">E - Park Gateway</h1>
