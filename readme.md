@@ -40,7 +40,7 @@ cd E-Park_GateWay/src
 4. **Manage bookings** and receive real-time updates.
 
 ## 💻 Tech Stack
-- **Frontend**: React.js ⚛️
+- **Frontend**: HTMA $ CSS ⚛️
 - **Backend**: Node.js, Express.js 🖥️
 - **Database**: MongoDB/Firebase 🗄️
 - **Authentication**: JWT/OAuth 🔑
