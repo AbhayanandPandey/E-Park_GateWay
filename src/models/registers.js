@@ -5,33 +5,14 @@ const { log } = require('handlebars');
 const UserSchema = new mongoose.Schema
 ({
     User_name:
-    {
-        type:String,
-        required:true
-    },
+    {type:String,required:true},
     email:
-    {
-        type:String,
-        required:true,
-        unique:true
-    },
+    {type:String,required:true,unique:true},
     password:
-    {
-        type:String,
-        required:true
-    },
+    {type:String,required:true},
     lastLogin: { type: Date, default: null },
-    tokens:[{
-        token:{
-            type:String,
-            required:true
-        }
-    }]
+    tokens:[{token:{type:String,required:true}}]
 });
-
-
-// password hashing
-
 UserSchema.pre("save", async function(next){
     if(this.isModified("password"))
     {
@@ -41,7 +22,6 @@ UserSchema.pre("save", async function(next){
     }
     next()
 })
-// tokens 
 UserSchema.methods.generateAuthToken = async function () {
     try {
         const token = jwt.sign({_id:this._id.toString()},"token")
@@ -52,6 +32,5 @@ UserSchema.methods.generateAuthToken = async function () {
         console.log(error)
     }
 }
-
 const Register = new mongoose.model('userdata1',UserSchema);
 module.exports = Register;
