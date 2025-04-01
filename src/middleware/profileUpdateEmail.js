@@ -3,23 +3,19 @@ const register = require("../models/registers");
 
 async function profileUpdateEmail(email,otp) {
   try {
-    // Find user by email
     const user = await register.findOne({ email });
 
     if (!user) {
       console.log("User not found for email:", email);
       return "User not found";
     }
-
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
         user: "youremail@gmail.com",
-        pass: "yourpass", // Use application-specific password
+        pass: "yourpass", 
       },
     });
-
-    // Email options
     const mailOptions = {
       from: "E-Park-Gateway",
       to: email,
@@ -50,17 +46,13 @@ async function profileUpdateEmail(email,otp) {
           </div>
         </div>`,
     };
-
-    // Send email
     await transporter.sendMail(mailOptions);
     console.log("OTP sent successfully to:");
     console.log(otp);
-
     return "OTP sent successfully";
   } catch (error) {
     console.error("Error sending OTP email:", error);
     throw new Error("Failed to send OTP email.");
   }
 }
-
 module.exports = profileUpdateEmail;
