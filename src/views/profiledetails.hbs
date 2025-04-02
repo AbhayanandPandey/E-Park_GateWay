@@ -605,32 +605,23 @@ document.getElementById("save2").addEventListener("click", async () => {
   }
 });
 
-/* document.getElementById("save1").addEventListener("click", async () => {
-  const currentPassword = document.getElementById("currentPassword").value.trim();
-  const ueml = document.getElementById("ueml").value.trim(); // Fixed incorrect ID
-  const newEmail = document.getElementById("newEmail").value.trim(); // Fixed incorrect ID
-  const newUsername = document.getElementById("newUsername").value.trim();
-
-  try {
-    const res = await fetch("/update-profile", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({  newEmail, newUsername,currentPassword, ueml }),
-    });
-
-    const responseData = await res.json(); // Expect JSON response
-    alert(responseData.message); // Display response message
-    if (responseData.redirect) {
-      window.location.href = responseData.redirect; // Redirect on success
-    }
-  } catch (error) {
-    console.error("Error:", error);
-  }
-})*/
-
 document.getElementById("save1").addEventListener("click", () => {
     document.getElementById("updateForm").submit();
 });
+  
+  document.getElementById("updateForm").addEventListener("keypress", function (event) {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      const otpSection = document.getElementById("otpSection");
+      const otpInput = document.getElementById("otpInput");
+
+      if (otpSection.style.display !== "none" && otpInput.value.trim() !== "") {
+        document.getElementById("save2").click(); 
+      } else {
+        document.getElementById("updateForm").submit();
+      }
+    }
+  });
 </script>
 </body>
 
