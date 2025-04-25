@@ -5,7 +5,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "abhay": "nodemon src/index.js",
-    "start":"node src/index.js",
+    "start": "node src/index.js",
     "type": "module"
   },
   "keywords": [],
@@ -26,7 +26,8 @@
     "html-minifier": "^4.0.0",
     "jsonwebtoken": "^9.0.2",
     "moment-timezone": "^0.5.46",
-    "mongoose": "^8.13.0",
+    "mongodb": "^6.16.0",
+    "mongoose": "^8.13.3",
     "nodemailer": "^6.10.0",
     "nodemon": "^3.1.9",
     "passport": "^0.7.0",
