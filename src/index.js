@@ -62,7 +62,7 @@ app.use(session({
   resave: false,
   saveUninitialized: true,
   store: MongoStore.create({
-    mongoUrl: 'mongodb+srv://eparkgateway:qsb3O2PbQzMUysvX@epark.vrqna2i.mongodb.net/NEWDATA?retryWrites=true&w=majority&appName=Epark', // Or your MongoDB URI
+    mongoUrl: 'mongodb+srv://resumecrafthub:v4Fa7YjlEumXLeKe@blinkit.7v48nmp.mongodb.net/Blinlkyt?retryWrites=true&w=majority', 
     collectionName: 'sessions'
   })
 }));

@@ -12,7 +12,7 @@ async function profileUpdateEmail(email,otp) {
       service: "gmail",
       auth: {
         user: "eparkgateway@gmail.com", 
-        pass: "ksirivsjacsesqtb", 
+        pass: "mzjitfzzrrwlgmum", 
       },
     });
     const mailOptions = {

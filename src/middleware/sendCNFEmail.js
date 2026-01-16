@@ -14,7 +14,7 @@ function sendCNFEmail1(email)
             service: "gmail",
             auth: {
               user: "eparkgateway@gmail.com",
-              pass: "ksirivsjacsesqtb",
+              pass: "mzjitfzzrrwlgmum",
             },
           });
       
