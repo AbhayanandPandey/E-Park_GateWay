@@ -1,28 +1,29 @@
 const nodemailer = require("nodemailer");
 const register = require("../models/registers");
-function sendCNFEmail1(email)
-{
-    const sendCNFEmail = async (req, res) => {
-        try {
-          const user = await register.findOne({ email: email });
-      
-          if (!user) {
-            return res.status(404).json({ message: "User not found." });
-          }
-      
-          const transporter = nodemailer.createTransport({
-            service: "gmail",
-            auth: {
-              user: "eparkgateway@gmail.com",
-              pass: "mzjitfzzrrwlgmum",
-            },
-          });
-      
-          const mailOptions = {
-            from: "E-Park-Gateway",
-            to: email,
-            subject: `Registration Successful`,
-            html: `
+function sendCNFEmail1(email) {
+  const sendCNFEmail = async (req, res) => {
+    try {
+      const user = await register.findOne({ email: email });
+
+      if (!user) {
+        return res.status(404).json({ message: "User not found." });
+      }
+
+      const transporter = nodemailer.createTransport({
+        host: "smtp.gmail.com",
+        port: 587,        // ✅ IMPORTANT
+        secure: false,
+        auth: {
+          user: "eparkgateway@gmail.com",
+          pass: "mzjitfzzrrwlgmum",
+        },
+      });
+
+      const mailOptions = {
+        from: "E-Park-Gateway",
+        to: email,
+        subject: `Registration Successful`,
+        html: `
               <div style="width: 100%; max-width: 600px; margin: 20px auto; background-color: #ffffff; padding: 30px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); font-family: Arial, sans-serif;">
                 <div style="text-align: center; margin-bottom: 30px;">
                   <h1 style="color: #007BFF; font-size: 28px; margin: 0;">Welcome to E-Park Gateway, ${user.User_name}!</h1>
@@ -48,16 +49,16 @@ function sendCNFEmail1(email)
                 </div>
               </div>
             `,
-          };
-      
-          await transporter.sendMail(mailOptions);
-          console.log("Email sent successfully");
-        } catch (error) {
-          console.error("Error sending email:", error);
-          res.status(500).json({ message: "Failed to send confirmation email.", error });
-        }
       };
-    sendCNFEmail();
+
+      await transporter.sendMail(mailOptions);
+      console.log("Email sent successfully");
+    } catch (error) {
+      console.error("Error sending email:", error);
+      res.status(500).json({ message: "Failed to send confirmation email.", error });
+    }
+  };
+  sendCNFEmail();
 }
 
 module.exports = sendCNFEmail1;

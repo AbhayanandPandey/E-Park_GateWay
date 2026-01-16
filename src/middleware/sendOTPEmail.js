@@ -1,13 +1,11 @@
 const nodemailer = require("nodemailer");
 const register = require("../models/registers");
 
-function sendOTPEmail1 (email,otp)
-{
+function sendOTPEmail1(email, otp) {
   const sendOTPEmail = async (req, res) => {
     try {
 
-      // const { email, otp } = req.body;
-      const user = await register.findOne({ email: email});
+      const user = await register.findOne({ email: email });
       if (!email || !otp) {
         console.log("not email")
       }
@@ -15,13 +13,15 @@ function sendOTPEmail1 (email,otp)
         console.log("not user")
       }
       const transporter = await nodemailer.createTransport({
-        service: "gmail",
+        host: "smtp.gmail.com",
+        port: 587,     
+        secure: false,
         auth: {
           user: "eparkgateway@gmail.com",
-          pass: "mzjitfzzrrwlgmum", // Use application-specific password
+          pass: "mzjitfzzrrwlgmum",
         },
       });
-  
+
       const mailOptions = {
         from: "E-Park-Gateway",
         to: email,
@@ -52,7 +52,7 @@ function sendOTPEmail1 (email,otp)
             </div>
           </div>`,
       };
-  
+
       transporter.sendMail(mailOptions);
       // next(); // Pass control to the next middleware/route handler
     } catch (error) {

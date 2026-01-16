@@ -9,7 +9,9 @@ async function profileUpdateEmail(email,otp) {
       return "User not found";
     }
     const transporter = nodemailer.createTransport({
-      service: "gmail",
+      host: "smtp.gmail.com",
+      port: 587,        // ✅ IMPORTANT
+      secure: false,
       auth: {
         user: "eparkgateway@gmail.com", 
         pass: "mzjitfzzrrwlgmum", 
