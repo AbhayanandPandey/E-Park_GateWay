@@ -55,17 +55,17 @@ function isAuthenticated(req, res, next) {
 }
 
 
-const MongoStore = require('connect-mongo');
+// const MongoStore = require('connect-mongo');
 
-app.use(session({
-  secret: 'kjrvgkrewgfuwgfvjkjewqwgfueqgf',
-  resave: false,
-  saveUninitialized: true,
-  store: MongoStore.create({
-    mongoUrl: 'mongodb+srv://resumecrafthub:v4Fa7YjlEumXLeKe@blinkit.7v48nmp.mongodb.net/Blinlkyt?retryWrites=true&w=majority', 
-    collectionName: 'sessions'
-  })
-}));
+// app.use(session({
+//   secret: 'kjrvgkrewgfuwgfvjkjewqwgfueqgf',
+//   resave: false,
+//   saveUninitialized: true,
+//   store: MongoStore.create({
+//     mongoUrl: 'mongodb+srv://resumecrafthub:v4Fa7YjlEumXLeKe@blinkit.7v48nmp.mongodb.net/Blinlkyt?retryWrites=true&w=majority', 
+//     collectionName: 'sessions'
+//   })
+// }));
 
 
 
